@@ -36,7 +36,7 @@ dotenv.config();
 const app = express();
 
 // Connect to MongoDB
-connectDB();
+const isDBConnected = await connectDB();
 
 // CORS configuration for production
 const allowedOrigins = [
@@ -72,23 +72,18 @@ app.use('/api', orderRoutes);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
-  const mongoStatus = mongoose.connection.readyState;
-  const statusMap = {
-    0: 'Disconnected',
-    1: 'Connected',
-    2: 'Connecting',
-    3: 'Disconnecting',
-    99: 'Uninitialized'
-  };
-   res.status(200).json({
-    success: true,
-    status: 'OK',
-    message: 'Server is running',
-    timestamp: new Date().toISOString(),
-    environment: process.env.NODE_ENV || 'development',
-    mongodb: statusMap[mongoStatus] || 'Unknown',
-    mongodbReadyState: mongoStatus
-  });
+  if(isDBConnected){
+    res.json({
+      success: true,
+      message: 'Healthy'
+    });
+  }
+  else{
+    res.status(500).json({
+      success: false,
+      message: 'Unhealthy'
+    });
+  }
 });
 
 app.get('/api/test-db', async (req, res) => {
