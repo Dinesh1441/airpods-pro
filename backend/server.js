@@ -81,7 +81,7 @@ app.get('/api/health', (req, res) => {
   else{
     res.status(500).json({
       success: false,
-      message: isDBConnected
+      message: isDBConnected.message
     });
   }
 });
