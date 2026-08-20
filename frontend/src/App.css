@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+
+.swiper-button-next, .swiper-button-prev {
+  color: #000 !important; /* Change the color to your desired value */
+   /* Adjust the size as needed */
+   /* Adjust the padding as needed */
+   width: 35px !important; /* Adjust the width as needed */
+   height: 35px !important; /* Adjust the height as needed */
+   background-color: rgba(255, 255, 255, 0.8); /* Optional: Add a background color */
+    border-radius: 50%; /* Optional: Make the buttons circular */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle shadow */
+}
+
+.swiper-button-next svg, .swiper-button-prev svg {
+  width: 18px !important; /* Adjust the size as needed */
+  height: 18px !important; /* Adjust the size as needed */
+  
+}
+
+.swiper-button-next svg{
+    margin-left: 2px; /* Adjust the margin as needed */
+}
+
+.swiper-button-prev svg{
+    margin-right: 2px; /* Adjust the margin as needed */
+}

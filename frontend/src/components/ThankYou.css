@@ -1,0 +1,151 @@
+/* frontend/src/components/ThankYou.css */
+.thankyou-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.thankyou-card {
+  background: white;
+  border-radius: 20px;
+  padding: 50px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.thankyou-icon {
+  font-size: 64px;
+  color: #4CAF50;
+  margin-bottom: 20px;
+}
+
+.thankyou-card h1 {
+  color: #1a1a2e;
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.thankyou-message {
+  color: #666;
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.order-details {
+  text-align: left;
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.order-details h3 {
+  color: #1a1a2e;
+  margin-bottom: 15px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-row span:first-child {
+  color: #666;
+}
+
+.detail-row span:last-child {
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.status-completed {
+  color: #4CAF50;
+}
+
+.status-pending {
+  color: #ff9800;
+}
+
+.status-failed {
+  color: #dc3545;
+}
+
+.delivery-info {
+  text-align: left;
+  background: #f0f4ff;
+  padding: 20px;
+  border-radius: 12px;
+  margin: 20px 0;
+}
+
+.delivery-info h4 {
+  color: #1a1a2e;
+  margin-bottom: 10px;
+}
+
+.delivery-info p {
+  color: #555;
+  margin: 3px 0;
+  font-size: 14px;
+}
+
+.continue-shopping {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 10px;
+}
+
+.continue-shopping:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+@media (max-width: 768px) {
+  .thankyou-card {
+    padding: 30px 20px;
+  }
+
+  .thankyou-card h1 {
+    font-size: 28px;
+  }
+
+  .thankyou-message {
+    font-size: 16px;
+  }
+
+  .detail-row {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .thankyou-card {
+    padding: 20px 15px;
+  }
+
+  .thankyou-card h1 {
+    font-size: 24px;
+  }
+
+  .order-details {
+    padding: 15px;
+  }
+}
