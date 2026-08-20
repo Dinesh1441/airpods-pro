@@ -34,7 +34,7 @@ const connectDB = async (retries = 5, delay = 5000) => {
     
     return {
       success: false,
-      message: error.message,
+      message: error,
     };
   }
 };
