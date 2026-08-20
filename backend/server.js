@@ -28,15 +28,29 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose'; 
-import connectDB from './config/db.js';
+import connectDB, {getDBStatus} from './config/db.js';
 import orderRoutes from './routes/orderRoutes.js';
 
 dotenv.config();
 
 const app = express();
 
+
+app.get("/api/health", (req, res) => {
+  const db = getDBStatus();
+
+  res.status(db.connected ? 200 : 503).json({
+    success: db.connected,
+    message: db.message,
+    database: {
+      connected: db.connected,
+      error: db.error,
+    },
+  });
+});
+
 // Connect to MongoDB
-const isDBConnected = await connectDB();
+connectDB();
 
 // CORS configuration for production
 const allowedOrigins = [
@@ -71,14 +85,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api', orderRoutes);
 
 // Health check endpoint
-app.get('/api/health', (req, res) => {
-
-  res.status(200).json({
-    success: true,
-    message: isDBConnected
-  })
-  
-});
 
 app.get('/api/test-db', async (req, res) => {
   try {
