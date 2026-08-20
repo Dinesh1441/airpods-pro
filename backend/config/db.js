@@ -1,5 +1,8 @@
 // backend/config/db.js
+import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+
+dotenv.config();
 
 const connectDB = async (retries = 5, delay = 5000) => {
   try {
