@@ -188,7 +188,7 @@ const OrderPopup = ({ isOpen, onClose, product, quantity }) => {
         paymentMethod: formData.paymentMethod
       };
 
-      const response = await axios.post('http://localhost:5000/api/create-order', orderData);
+      const response = await axios.post('https://smartwatch-backend-alpha.vercel.app/api/create-order', orderData);
 
       if (response.data.success) {
         if (formData.paymentMethod === 'COD') {
@@ -211,7 +211,7 @@ const OrderPopup = ({ isOpen, onClose, product, quantity }) => {
             handler: async (paymentResponse) => {
               try {
                 setLoading(true);
-                const verifyResponse = await axios.post('http://localhost:5000/api/verify-payment', {
+                const verifyResponse = await axios.post('https://smartwatch-backend-alpha.vercel.app/api/verify-payment', {
                   orderId: response.data.data._id,
                   paymentId: paymentResponse.razorpay_payment_id,
                   signature: paymentResponse.razorpay_signature,

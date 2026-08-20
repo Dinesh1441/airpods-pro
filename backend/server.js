@@ -27,6 +27,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import mongoose from 'mongoose'; 
 import connectDB from './config/db.js';
 import orderRoutes from './routes/orderRoutes.js';
 
