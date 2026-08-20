@@ -22,6 +22,8 @@ const connectDB = async (retries = 5, delay = 5000) => {
       minPoolSize: 2,
     });
 
+    
+
   
     return true;
     
@@ -30,7 +32,10 @@ const connectDB = async (retries = 5, delay = 5000) => {
     
  
     
-    return false;
+    return {
+      success: false,
+      message: error.message,
+    };
   }
 };
 

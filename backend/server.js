@@ -75,13 +75,13 @@ app.get('/api/health', (req, res) => {
   if(isDBConnected){
     res.json({
       success: true,
-      message: 'Healthy'
+      message: isDBConnected
     });
   }
   else{
     res.status(500).json({
       success: false,
-      message: 'Unhealthy'
+      message: isDBConnected
     });
   }
 });
@@ -168,13 +168,3 @@ app.use((err, req, res, next) => {
 // Export for Vercel
 export default app;
 
-// For local development
-if (process.env.NODE_ENV !== 'production') {
-  const PORT = process.env.PORT || 5000;
-  app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
-    console.log(`🔗 API URL: http://localhost:${PORT}/api`);
-    console.log(`💚 Health Check: http://localhost:${PORT}/api/health`);
-    console.log(`📦 Environment: ${process.env.NODE_ENV || 'development'}`);
-  });
-}
