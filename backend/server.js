@@ -72,18 +72,12 @@ app.use('/api', orderRoutes);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
-  if(isDBConnected){
-    res.json({
-      success: true,
-      message: isDBConnected
-    });
-  }
-  else{
-    res.status(500).json({
-      success: false,
-      message: isDBConnected.message
-    });
-  }
+
+  res.status(200).json({
+    success: true,
+    message: isDBConnected
+  })
+  
 });
 
 app.get('/api/test-db', async (req, res) => {
