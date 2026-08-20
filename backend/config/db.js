@@ -20,6 +20,7 @@ const connectDB = async () => {
     // Check if MONGODB_URI exists
     const mongoUri = process.env.MONGODB_URI;
     
+    
     if (!mongoUri) {
       console.error('❌ MONGODB_URI is not defined in environment variables');
       console.error('📋 Available env vars:', Object.keys(process.env).join(', '));
