@@ -173,7 +173,7 @@ const ProductPage = () => {
     } else {
       // Fallback: copy product details + link
       await navigator.clipboard.writeText(
-        `${product.name}\nMRP: ₹${product.mrp}\nSelling Price: ₹${product.sellingPrice}\n${productUrl}`
+        `${product.name}\nPrice: ₹${product.sellingPrice}\n${productUrl}`
       );
 
       alert("Product details copied!");
