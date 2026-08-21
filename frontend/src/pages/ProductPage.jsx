@@ -202,7 +202,7 @@ const ProductPage = () => {
       </div> */}
 
       {/* Hero Section */}
-      <section className="max-w-7xl mx-auto md:px-4 py-6 md:py-4">
+      <section className="max-w-7xl mx-auto md:px-4 py-2 md:py-4">
         <div className="bg-white   overflow-hidden ">
           <div className="grid md:grid-cols-2 gap-6 grid-cols-1 p-4 md:p-8">
             {/* Left - Image Slider */}
