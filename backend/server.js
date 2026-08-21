@@ -54,10 +54,7 @@ connectDB();
 
 // CORS configuration for production
 const allowedOrigins = [
-  'http://localhost:5173',
-  'http://localhost:3000',
-  'https://smartwatch.vercel.app',
-  'https://smartwatch-git-main.vercel.app',
+  'https://smartwatch-pi.vercel.app',
   process.env.FRONTEND_URL
 ].filter(Boolean);
 
@@ -131,17 +128,17 @@ app.get('/api/test-db', async (req, res) => {
 // Root endpoint
 app.get('/', (req, res) => {
   res.json({
-    name: 'DS Global Store API',
+    // name: 'DS Global Store API',
     version: '1.0.0',
     status: 'Active',
-    endpoints: {
-      health: '/api/health',
-      createOrder: '/api/create-order [POST]',
-      verifyPayment: '/api/verify-payment [POST]',
-      getOrder: '/api/order/:orderId [GET]',
-      getAllOrders: '/api/orders [GET]'
-    },
-    documentation: 'Contact admin for API documentation'
+    // endpoints: {
+    //   health: '/api/health',
+    //   createOrder: '/api/create-order [POST]',
+    //   verifyPayment: '/api/verify-payment [POST]',
+    //   getOrder: '/api/order/:orderId [GET]',
+    //   getAllOrders: '/api/orders [GET]'
+    // },
+    // documentation: 'Contact admin for API documentation'
   });
 });
 
