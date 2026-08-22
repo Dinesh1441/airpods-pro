@@ -345,6 +345,12 @@ const ProductPage = () => {
 
               </div>
 
+              <div>
+
+                  <h2 className='font-bold   px-4 py-2 border shadow md:w-fit text-center rounded-xl border-orange bg-black text-white '> <FaTruck className='inline' /> Get Free Delivery</h2>
+
+              </div>
+
            
               {/* Delivery Info */}
               <div className="flex gap-6 flex-wrap text-xs md:text-sm text-gray-600 pt-3 border-t border-gray-200">
