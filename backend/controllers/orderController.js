@@ -217,7 +217,7 @@ export const createOrder = async (req, res) => {
   try {
     const { customer, quantity, paymentMethod } = req.body;
 
-    let amount = 1499 * quantity;
+    let amount = 999 * quantity;
     // Validate customer data
     const validationErrors = validateCustomerData(customer);
     if (Object.keys(validationErrors).length > 0) {
@@ -283,7 +283,7 @@ export const createOrder = async (req, res) => {
         receipt: `order_${Date.now()}`,
         payment_capture: 1,
         notes: {
-          product: 'Black T55+ Smartwatch',
+          product: 'AirPods Pro (2nd Generation)',
           name: customer.name,
           email: customer.email,
           mobile: customer.mobile,

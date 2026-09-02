@@ -2,12 +2,13 @@
 import React, { useState, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay, Thumbs } from 'swiper/modules';
-import { 
-  FaStar, FaStarHalfAlt, FaRegStar, FaHeart, FaShare, 
+import { FaVolumeUp,  FaComments, FaMapMarker, FaBatteryFull, 
+  FaStar, FaStarHalfAlt, FaMicrochip, FaRegStar, FaHeart, FaShare, 
   FaCheck, FaMinus, FaPlus, FaShoppingBag, FaTruck,
   FaLock, FaUndo, FaMobile, FaPhone, FaHeartbeat,
   FaRunning, FaMusic, FaBolt, FaPlay
 } from 'react-icons/fa';
+import { HiSpeakerXMark } from "react-icons/hi2";
 import OrderPopup from '../components/OrderPopup';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -17,11 +18,11 @@ import pay1 from '../assets/images/payment/googlepay.svg';
 import pay2 from '../assets/images/payment/paytm.svg';
 import pay3 from '../assets/images/payment/phonepe.svg';
 
-import img1 from '../assets/images/product/1.webp';
-import img2 from '../assets/images/product/2.webp';
-import img3 from '../assets/images/product/3.webp';
-import img4 from '../assets/images/product/4.webp';
-import img5 from '../assets/images/product/5.webp';
+import img1 from '../assets/images/product/1.png';
+import img2 from '../assets/images/product/2.png';
+import img3 from '../assets/images/product/3.png';
+import img4 from '../assets/images/product/4.png';
+import img5 from '../assets/images/product/5.png';
 
 
 import video1 from '../assets/images/video/1.mp4';
@@ -54,7 +55,7 @@ const reviews = [
     name: 'Rahul',
     rating: 5,
     img: review1,
-    comment: 'Amazing smartwatch! The battery life is incredible and the display is super crisp. Highly recommended!',
+    comment:"The noise cancellation is incredible! I can't hear anything around me when I'm listening to music. The sound quality is amazing and the battery life lasts all day.",
     date: '2 days ago'
   },
   {
@@ -62,7 +63,7 @@ const reviews = [
     name: 'Rajesh',
     rating: 4.5,
     img: review2,
-    comment: 'Great features for the price. The heart rate monitor is accurate and the design is elegant.',
+    comment: "Love the spatial audio feature! It feels like I'm in a concert hall. The fit is comfortable and they don't fall out during workouts.",
     date: '1 week ago'
   },
   {
@@ -70,29 +71,47 @@ const reviews = [
     name: 'Amit Kumar',
     rating: 5,
     img: review3,
-    comment: 'Best smartwatch under 2000. The calling feature works perfectly and the build quality is premium.',
+    comment: "Best purchase I've made this year! The sound quality is exceptional and the noise cancellation works perfectly even in noisy environments.",
     date: '2 weeks ago'
   }
 ];
 
 const faqs = [
   {
-    question: 'What is the battery life of T55+ Smartwatch?',
-    answer: 'The T55+ Smartwatch offers up to 24 hours of battery life on a single charge with regular use.'
+    question: "What's the difference between AirPods Pro and regular AirPods?",
+    answer: 'AirPods Pro feature Active Noise Cancellation, Transparency mode, and a customizable fit with multiple ear tip sizes. They also have a more immersive sound experience with Personalized Spatial Audio.'
   },
   {
-    question: 'Is the watch compatible with both Android and iOS?',
-    answer: 'Yes, the T55+ Smartwatch is compatible with both Android (5.0+) and iOS (10.0+) devices.'
+    question: 'How long does the battery last?',
+    answer: 'AirPods Pro offer up to 6 hours of listening time with Active Noise Cancellation enabled, and up to 30 hours of total listening time with the MagSafe Charging Case.'
   },
   {
-    question: 'Is the watch waterproof?',
-    answer: 'Yes, the watch has an IP67 waterproof rating, making it suitable for everyday use, including rain and hand washing.'
+    question: "Are AirPods Pro water resistant?",
+    answer: 'Yes, AirPods Pro and the MagSafe Charging Case are rated IP54 for dust and water resistance, making them suitable for workouts and everyday use.'
   },
   {
-    question: 'Does it support Bluetooth calling?',
-    answer: 'Yes, the watch features built-in Bluetooth calling for hands-free communication.'
+    question: 'What is Personalized Spatial Audio?',
+    answer:"Personalized Spatial Audio with dynamic head tracking delivers a theater-like sound experience that places sound all around you. It uses the cameras on your iPhone to create a personal profile for sound that's tuned just for you."
+  },
+  {
+    question: 'Do AirPods Pro work with Android devices?',
+    answer:"Yes, AirPods Pro work with Android devices via Bluetooth, but some features like seamless device switching, Siri, and battery level indicators may be limited compared to using them with Apple devices."
   }
 ];
+
+
+const features = [
+  { icon: <FaMicrochip />, title : "H2 Chip" , desc : "The powerful H2 chip pushes advanced audio performance even further. It works in concert with a low-distortion, high-excursion driver and custom amplifier to deliver crisp, clear high notes and deep, rich bass in stunning definition."},
+  { icon: <FaVolumeUp />, title : "Active Noise Cancellation" , desc : "Up to 2x more Active Noise Cancellation than original AirPods Pro and AirPods 4 with Active Noise Cancellation."},
+  { icon: <HiSpeakerXMark />, title : "Adaptive Audio" , desc : "Adaptive Audio and Transparency mode automatically tailors the noise control to provide the best experience in the moment."},
+  { icon: <FaComments />, title : "Conversation Awareness" , desc : "Conversation Awareness lowers volume and reduces background noise when you start speaking."},
+  {
+  icon: <FaMapMarker />, title : "Personalized Spatial Audio" , desc : "Personalised Spatial Audio with dynamic head tracking places sound all around you. And with dynamic head tracking, sound stays anchored to your device."   
+  },
+  {
+    icon: <FaBatteryFull />, title : "Battery Life" , desc : "Up to 30 hours of listening time with charging case and Active Noise Cancellation. MagSafe Charging Case (USB‑C) works with Apple Watch charger and Qi‑certified chargers."
+  }
+]
 
 const ProductPage = () => {
   const [quantity, setQuantity] = useState(1);
@@ -104,17 +123,12 @@ const ProductPage = () => {
   const mainSwiperRef = useRef(null);
 
   const product = {
-    name: 'Black T55+ Smartwatch With Scroll Worker',
-    price: 1499,
-    mrp: 2499,
+    name: 'AirPods Pro (2nd Generation)',
+    price: 999,
+    mrp: 1799,
     rating: 4.5,
-    totalReviews: 128,
-    description: [
-      { icon: <FaMobile className="text-black" />, text: '44 mm Display with Touchscreen' },
-      { icon: <FaPhone className="text-black" />, text: 'Bluetooth & Call Function' },
-      { icon: <FaRunning className="text-black" />, text: 'Ideal for Fitness & Outdoor' },
-      { icon: <FaHeartbeat className="text-black" />, text: 'Heart Rate Monitor' },
-      { icon: <FaBolt className="text-black" />, text: '24 Hours Battery Life' }],
+    totalReviews: 122,
+    description:"Active Noise Cancellation with Adaptive Audio for immersive sound. Personalized Spatial Audio with dynamic head tracking places sound all around you." ,
   };
 
   const discountPercentage = Math.round(((product.mrp - product.price) / product.mrp) * 100);
@@ -149,14 +163,14 @@ const ProductPage = () => {
     return stars;
   };
 
-  const features = [
-    { icon: <FaMobile className="text-2xl " />, title: '44 mm Display', desc: 'Vivid touchscreen' },
-    { icon: <FaPhone className="text-2xl" />, title: 'Bluetooth Calling', desc: 'Stay connected' },
-    { icon: <FaHeartbeat className="text-2xl" />, title: 'Heart Rate Monitor', desc: 'Health tracking' },
-    { icon: <FaRunning className="text-2xl" />, title: 'Fitness & Outdoor', desc: 'Active lifestyle' },
-    { icon: <FaMusic className="text-2xl" />, title: 'Music Control', desc: 'Playlist management' },
-    { icon: <FaBolt className="text-2xl" />, title: '24 Hours Battery', desc: 'All-day power' }
-  ];
+  // const features = [
+  //   { icon: <FaMobile className="text-2xl " />, title: '44 mm Display', desc: 'Vivid touchscreen' },
+  //   { icon: <FaPhone className="text-2xl" />, title: 'Bluetooth Calling', desc: 'Stay connected' },
+  //   { icon: <FaHeartbeat className="text-2xl" />, title: 'Heart Rate Monitor', desc: 'Health tracking' },
+  //   { icon: <FaRunning className="text-2xl" />, title: 'Fitness & Outdoor', desc: 'Active lifestyle' },
+  //   { icon: <FaMusic className="text-2xl" />, title: 'Music Control', desc: 'Playlist management' },
+  //   { icon: <FaBolt className="text-2xl" />, title: '24 Hours Battery', desc: 'All-day power' }
+  // ];
 
   const handleShare = async () => {
   const productUrl = window.location.href;
@@ -194,12 +208,12 @@ const ProductPage = () => {
   return (
     <div className=" min-h-screen pb-20 md:pb-0">
       {/* Top Bar */}
-      {/* <div className="bg-black text-white py-2 px-4 sticky top-0 z-50">
+      <div className="bg-black text-white py-3 px-4 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto flex items-center justify-center text-xl">
-          <span className="font-medium text-white">SMARTWATCH PRO</span>
+         <marquee behavior="" direction=""> <span className="font-medium text-white">Limited Time Offer: 45% Off On Airpods Pro</span></marquee>
          
         </div>
-      </div> */}
+      </div>
 
       {/* Hero Section */}
       <section className="max-w-7xl mx-auto md:px-4 py-2 md:py-4">
@@ -277,9 +291,9 @@ const ProductPage = () => {
 
               {/* Price */}
               <div className="flex items-center gap-3 flex-wrap">
-                <span className="text-3xl md:text-4xl font-bold text-black">₹{product.price}</span>
+                <span className="text-3xl md:text-4xl font-bold text-red-600">₹{product.price}</span>
                 <span className="text-base text-gray-400 line-through">₹{product.mrp}</span>
-                <span className="bg-black text-white px-3 py-1 rounded-full text-sm font-semibold">
+                <span className="bg-red-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
                   {discountPercentage}% OFF
                 </span>
               </div>
@@ -287,12 +301,7 @@ const ProductPage = () => {
               {/* Description List */}
               <ul className="space-y-1.5 mt-5 border-t border-b border-gray-400 py-4">
                 <h2 className='font-bold'>Description</h2>
-                {product.description.map((item, index) => (
-                  <li key={index} className="flex   items-center gap-2 text-gray-700 text-sm">
-                    {item.icon}
-                    <span>{item.text}</span>
-                  </li>
-                ))}
+                {product.description}
               </ul>
                 <div className="flex md:flex-row flex-col gap-4 md:gap-6">
               {/* Quantity */}
@@ -361,9 +370,9 @@ const ProductPage = () => {
         </div>
       </section>
       
-      <section className="w-full">
+      {/* <section className="w-full">
         <img src={banner} className='w-full' alt="" />
-      </section>
+      </section> */}
 
       {/* Features Section */}
       <section className="max-w-7xl mx-auto px-4 py-8 hidden ">
@@ -407,43 +416,22 @@ const ProductPage = () => {
         </div>
       </section>
 
-      {/* Video Slider */}
-      <section className='bg-orange-50' >
-        {/* <h2 className="text-2xl md:text-3xl font-bold text-black text-center mb-6">Product Videos</h2> */}
+      {/* features Section */}
+      <section className='bg-orange-50 py-20' >
+      <h2 className="text-2xl md:text-3xl font-bold text-black text-center mb-6">Advanced Features</h2>
 
-        <div className="max-w-7xl mx-auto px-4 py-20">
-        <Swiper
-          modules={[Navigation, Pagination]}
-          navigation
-          autoplay  
-          loop
-         
-          breakpoints={{
-            320: { slidesPerView: 2, spaceBetween: 10 },
-            768: { slidesPerView: 3, spaceBetween: 15 },
-            1024: { slidesPerView: 4, spaceBetween: 20 }
-          }}
-          className="rounded-xl"
-        >
-          {videos.map((video, index) => (
-            <SwiperSlide key={index}>
-              <div className=" rounded-xl overflow-hidden bg-black relative">
-                <video
-  className=""
-  autoPlay
-  playsInline
-  muted
-  loop
-  controls
->
-  <source src={video} type="video/mp4" />
-  Your browser does not support the video tag.
-</video>
-             
+        <div className="max-w-7xl mx-auto px-4 ">
+          <div className="grid md:grid-cols-2  gap-3">
+             {features.map((feature, index) => (
+            <div key={`feature-${index}`} className="bg-white p-4 md:p-5 rounded-xl  border border-gray-100 hover:shadow-md transition-shadow border border-gray-300">
+                      <h2 className='text-3xl mb-2'>{feature.icon}</h2>
+                     <h3 className='text-xl font-bold mb-2'>{feature.title}</h3>
+                    <p className='text-lg'>{feature.desc}</p>
+                 
+       
               </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+              ))}
+          </div>
         </div>
       </section>
 
