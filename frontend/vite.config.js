@@ -10,7 +10,7 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/api': {
-        target: 'https://smartwatch-backend-alpha.vercel.app',
+        target: 'https://airpods-pro-backend.vercel.app/',
         changeOrigin: true
       }
     }
