@@ -124,7 +124,7 @@ const sendOrderConfirmationEmail = async (order, paymentMethod) => {
               </div>
               <div class="detail-row">
                 <span><strong>Product:</strong></span>
-                <span>Black T55+ Smartwatch</span>
+                <span>AirPods Pro (2nd Generation)</span>
               </div>
               <div class="detail-row">
                 <span><strong>Quantity:</strong></span>

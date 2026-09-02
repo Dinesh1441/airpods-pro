@@ -206,7 +206,7 @@ const OrderPopup = ({ isOpen, onClose, product, quantity }) => {
             amount: totalAmount * 100,
             currency: 'INR',
             name: 'DS Global Store',
-            description: 'T55+ Smartwatch',
+            description: 'AirPods Pro (2nd Generation)',
             order_id: response.data.data.orderDetails.razorpayOrderId,
             handler: async (paymentResponse) => {
               try {
