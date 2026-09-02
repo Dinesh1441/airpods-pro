@@ -54,7 +54,7 @@ connectDB();
 
 // CORS configuration for production
 const allowedOrigins = [
-  'https://smartwatch-pi.vercel.app',
+  'https://airpods-pro-backend.vercel.app',
   process.env.FRONTEND_URL
 ].filter(Boolean);
 
